@@ -1,0 +1,4 @@
+Created the initial Pyodide calculator files based on previous conversation.
+- index.html: Basic HTML structure and UI elements for the calculator.
+- style.css: CSS for styling the calculator interface.
+- script.js: JavaScript to handle user input, interact with Pyodide for calculations, and manage display/state. 
