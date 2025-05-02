@@ -1,4 +1,8 @@
 Created the initial Pyodide calculator files based on previous conversation.
 - index.html: Basic HTML structure and UI elements for the calculator.
 - style.css: CSS for styling the calculator interface.
-- script.js: JavaScript to handle user input, interact with Pyodide for calculations, and manage display/state. 
+- script.js: JavaScript to handle user input, interact with Pyodide for calculations, and manage display/state.
+
+Replaced the Pyodide calculator with the Diablo 2 Rune Upgrade Calculator.
+- Deleted old index.html, style.css, script.js.
+- Created new index.html, style.css, script.js with D2 theme and rune upgrade logic. 

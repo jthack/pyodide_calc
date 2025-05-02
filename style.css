@@ -1,105 +1,214 @@
+/* Basic Reset & Dark Theme Variables */
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --primary-color: #c89b3c; /* Diablo Gold */
+    --secondary-color: #7a6b48;
+    --border-color: #444;
+    --input-bg: #2a2a2a;
+    --input-border: #555;
+    --rune-name-color: #f0d8a8; /* Lighter gold for rune names */
+    --rune-count-color: #ffffff;
+    --button-bg: var(--primary-color);
+    --button-text: #000;
+    --button-hover-bg: #e0b45c;
+    --button-reset-bg: #666;
+    --button-reset-hover-bg: #888;
+    --font-main: 'Roboto', sans-serif;
+    --font-headings: 'Cinzel', serif; /* Diablo-esque font */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 90vh;
-    background-color: #f0f0f0;
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #252525;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+}
+
+h1, h2 {
+    font-family: var(--font-headings);
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 700;
 }
 
 h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.calculator {
-    background-color: #333;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    width: 300px;
-}
-
-.display {
-    background-color: #eee;
-    color: #333;
     font-size: 2.5em;
-    text-align: right;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    min-height: 1.5em; /* Ensure height even when empty */
-    overflow-wrap: break-word; /* Wrap long numbers */
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 15px;
 }
 
-.buttons {
+h2 {
+    font-size: 1.8em;
+    margin-top: 30px;
+}
+
+.description {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #b0b0b0;
+    font-size: 0.95em;
+}
+
+.calculator-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Grid for Runes */
+.rune-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid */
+    gap: 15px;
 }
 
-button {
-    background-color: #666;
-    color: white;
-    border: none;
+.rune-item {
+    background-color: var(--input-bg);
+    padding: 10px;
     border-radius: 5px;
-    padding: 15px;
-    font-size: 1.2em;
-    cursor: pointer;
+    border: 1px solid var(--input-border);
+    text-align: center;
     transition: background-color 0.2s ease;
 }
 
+.rune-item:hover {
+    background-color: #333;
+}
+
+.rune-item label,
+.rune-item .rune-name {
+    display: block;
+    font-weight: bold;
+    color: var(--rune-name-color);
+    margin-bottom: 5px;
+    font-family: var(--font-headings);
+    font-size: 1.1em;
+}
+
+.rune-item input[type="number"],
+.rune-item .rune-result-count {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid var(--input-border);
+    background-color: #383838;
+    color: var(--rune-count-color);
+    border-radius: 4px;
+    font-size: 1em;
+    text-align: center;
+    -moz-appearance: textfield; /* Firefox */
+}
+
+.rune-item input[type="number"]::-webkit-outer-spin-button,
+.rune-item input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Chrome, Safari, Edge, Opera */
+    margin: 0;
+}
+
+.rune-item .rune-result-count {
+    font-weight: bold;
+    font-size: 1.2em;
+    min-height: 37px; /* Match input height roughly */
+    line-height: 21px; /* Adjust for vertical centering */
+    background-color: transparent;
+    border: none;
+}
+
+
+.action-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+button {
+    font-family: var(--font-headings);
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 button:hover {
-    background-color: #777;
+    background-color: var(--button-hover-bg);
 }
 
 button:active {
-    background-color: #555;
+    transform: scale(0.98);
 }
 
-#equals {
-    grid-row: span 2; /* Make equals button taller */
-    background-color: #ff9500; /* Orange for equals */
-}
-#equals:hover {
-    background-color: #ffA500;
-}
-#equals:active {
-    background-color: #cc7a00;
+#reset-button {
+    background-color: var(--button-reset-bg);
+    color: var(--text-color);
 }
 
-
-.zero {
-    grid-column: span 2; /* Make zero button wider */
+#reset-button:hover {
+     background-color: var(--button-reset-hover-bg);
 }
 
-.loading, .error {
-    margin-top: 10px;
-    padding: 5px;
-    border-radius: 3px;
-    text-align: center;
+.recipes-section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+#recipe-list {
+    list-style: none;
+    padding-left: 0;
+    column-count: 2; /* Show recipes in columns */
+    column-gap: 20px;
+}
+
+#recipe-list li {
+    background-color: var(--input-bg);
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
     font-size: 0.9em;
+    color: #ccc;
+    border-left: 3px solid var(--secondary-color);
 }
 
-.loading {
-    background-color: #e0e0ff;
-    color: #333;
+#recipe-list li span {
+    font-weight: bold;
+    color: var(--rune-name-color);
 }
 
-.error {
-    background-color: #ffdddd;
-    color: #d8000c;
-    display: none; /* Hidden by default */
-}
-
-footer {
-    margin-top: 20px;
-    font-size: 0.8em;
-    color: #555;
-    text-align: center;
-}
-footer a {
-    color: #007bff;
+/* Small screen adjustments */
+@media (max-width: 600px) {
+    .rune-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    button { padding: 10px 20px; font-size: 1em; }
+     #recipe-list { column-count: 1; }
 } 
